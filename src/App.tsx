@@ -12,7 +12,7 @@ export const App: React.FC = () => {
   const [error, setError] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
 
-  const completedTodos = todos.filter((todo: Todo) => todo.completed)
+  const completedTodos = todos.filter((todo: Todo) => todo.completed);
 
   useEffect(() => {
     setVisibleTodos(todos);
@@ -48,7 +48,7 @@ export const App: React.FC = () => {
       .catch(() => handleError('Unable to load todos'));
   }, []);
 
-  const handleChangeFilter = (filter: string) => setSelectedFilter(filter)
+  const handleChangeFilter = (filter: string) => setSelectedFilter(filter);
 
   const lengthOfUncompletedTodos = todos.length - completedTodos.length;
 
