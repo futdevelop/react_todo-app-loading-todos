@@ -8,30 +8,29 @@ import ErrorHandler from './components/ErrorHandler';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  const [visibleTodos, setVisibleTodos] = useState<Todo[]>(todos);
   const [error, setError] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('all');
 
   const completedTodos = todos.filter((todo: Todo) => todo.completed);
 
-  useEffect(() => {
-    setVisibleTodos(todos);
-  }, [todos]);
+  function getVisibleTodos() {
+    return todos.filter(todo => {
+      switch (selectedFilter) {
+        case 'completed':
+          return todo.completed;
+        case 'active':
+          return !todo.completed;
+        case 'all':
+        default:
+          return true;
+      }
+    });
+  }
+
+  const visibleTodos = getVisibleTodos();
 
   useEffect(() => {
-    setVisibleTodos(
-      todos.filter(todo => {
-        switch (selectedFilter) {
-          case 'completed':
-            return todo.completed;
-          case 'active':
-            return !todo.completed;
-          case 'all':
-          default:
-            return true;
-        }
-      }),
-    );
+    getVisibleTodos();
   }, [selectedFilter]);
 
   const handleError = (errorMessage: string) => {
