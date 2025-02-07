@@ -23,17 +23,22 @@ const Footer: React.FC<Props> = ({
       </span>
 
       <nav className="filter" data-cy="Filter">
-        {filters.map(filter => (
-          <a
-            href="#/"
-            className={`filter__link ${selectedFilter === filter && 'selected'}`}
-            data-cy="FilterLinkAll"
-            onClick={() => handleChangeFilter(filter)}
-            key={filter}
-          >
-            {filter.charAt(0).toUpperCase() + filter.slice(1, filter.length)}
-          </a>
-        ))}
+        {filters.map(filter => {
+          const uppercasedFilter =
+            filter.charAt(0).toUpperCase() + filter.slice(1, filter.length);
+
+          return (
+            <a
+              href={`#/${filter}`}
+              className={`filter__link ${selectedFilter === filter && 'selected'}`}
+              data-cy={`FilterLink` + uppercasedFilter}
+              onClick={() => handleChangeFilter(filter)}
+              key={filter}
+            >
+              {uppercasedFilter}
+            </a>
+          );
+        })}
       </nav>
 
       <button
