@@ -5,14 +5,16 @@ type Props = {
   lengthOfUncompletedTodos: number;
   handleChangeFilter: (filter: string) => void;
   selectedFilter: string;
-  completedTodos: Todo[]
+  completedTodos: Todo[];
 };
+
+const filters = ['all', 'active', 'completed'];
 
 const Footer: React.FC<Props> = ({
   lengthOfUncompletedTodos,
   handleChangeFilter,
   selectedFilter,
-  completedTodos
+  completedTodos,
 }) => {
   return (
     <footer className="todoapp__footer" data-cy="Footer">
@@ -21,35 +23,19 @@ const Footer: React.FC<Props> = ({
       </span>
 
       <nav className="filter" data-cy="Filter">
-        <a
-          href="#/"
-          className={`filter__link ${selectedFilter === 'all' && 'selected'}`}
-          data-cy="FilterLinkAll"
-          onClick={() => handleChangeFilter('all')}
-        >
-          All
-        </a>
-
-        <a
-          href="#/active"
-          className={`filter__link ${selectedFilter === 'active' && 'selected'}`}
-          data-cy="FilterLinkActive"
-          onClick={() => handleChangeFilter('active')}
-        >
-          Active
-        </a>
-
-        <a
-          href="#/completed"
-          className={`filter__link ${selectedFilter === 'completed' && 'selected'}`}
-          data-cy="FilterLinkCompleted"
-          onClick={() => handleChangeFilter('completed')}
-        >
-          Completed
-        </a>
+        {filters.map(filter => (
+          <a
+            href="#/"
+            className={`filter__link ${selectedFilter === filter && 'selected'}`}
+            data-cy="FilterLinkAll"
+            onClick={() => handleChangeFilter(filter)}
+            key={filter}
+          >
+            {filter.charAt(0).toUpperCase() + filter.slice(1, filter.length)}
+          </a>
+        ))}
       </nav>
 
-      {/* this button should be disabled if there are no completed todos */}
       <button
         type="button"
         className="todoapp__clear-completed"
