@@ -25,7 +25,7 @@ const Footer: React.FC<Props> = ({
       <nav className="filter" data-cy="Filter">
         {filters.map(filter => {
           const uppercasedFilter =
-            filter.charAt(0).toUpperCase() + filter.slice(1, filter.length);
+            filter.charAt(0).toUpperCase() + filter.slice(1, filter.length)
 
           return (
             <a
