@@ -9,7 +9,7 @@ The task consists of 3 part:
 - [Add and Delete](https://github.com/mate-academy/react_todo-app-add-and-delete)
 - [Toggle and Rename](https://github.com/mate-academy/react_todo-app-with-api)
 
-In this 1st part you will:
+In this 1st part you will: 
 
 - learn the markup in `App.tsx`
 - learn `src/utils/fetchClient.ts` implementations and use it (or delete use any other approaches to interact with API)
