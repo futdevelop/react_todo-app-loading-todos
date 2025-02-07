@@ -34,8 +34,8 @@ export const App: React.FC = () => {
     );
   }, [selectedFilter]);
 
-  const handleError = (error: string) => {
-    setError(error);
+  const handleError = (errorMessage: string) => {
+    setError(errorMessage);
 
     setTimeout(() => {
       setError('');
