@@ -7,13 +7,13 @@ import TodoList from './components/TodoList';
 import ErrorHandler from './components/ErrorHandler';
 
 enum ErrorMessages {
-  UnableToLoad = "Unable to load todos"
-} 
+  UnableToLoad = 'Unable to load todos',
+}
 
 export enum Filters {
   All = 'all',
   Active = 'active',
-  Completed = 'completed'
+  Completed = 'completed',
 }
 
 export const App: React.FC = () => {
@@ -41,7 +41,7 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     getVisibleTodos();
-  }, [selectedFilter]);
+  }, [todos, selectedFilter]);
 
   const handleError = (errorMessage: string) => {
     setError(errorMessage);

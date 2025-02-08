@@ -8,13 +8,15 @@ type Props = {
 const TodoItem: React.FC<Props> = ({ todo }) => {
   return (
     <div data-cy="Todo" className={`todo ${todo.completed && 'completed'}`}>
-      <label className="todo__status-label">
+      <label className="todo__status-label" htmlFor={`todo-${todo.id}`}>
         <input
+          id={`todo-${todo.id}`}
           data-cy="TodoStatus"
           type="checkbox"
           className="todo__status"
-          checked={todo.completed ? true : false}
+          checked={todo.completed}
         />
+        <span className="visually-hidden">Toggle todo status</span>
       </label>
 
       <span data-cy="TodoTitle" className="todo__title">
