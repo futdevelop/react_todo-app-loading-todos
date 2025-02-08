@@ -6,6 +6,16 @@ import Footer from './components/Footer';
 import TodoList from './components/TodoList';
 import ErrorHandler from './components/ErrorHandler';
 
+enum ErrorMessages {
+  UnableToLoad = "Unable to load todos"
+} 
+
+export enum Filters {
+  All = 'all',
+  Active = 'active',
+  Completed = 'completed'
+}
+
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
   const [error, setError] = useState('');
@@ -44,7 +54,7 @@ export const App: React.FC = () => {
   useEffect(() => {
     getTodos()
       .then((res: Todo[]) => setTodos(res))
-      .catch(() => handleError('Unable to load todos'));
+      .catch(() => handleError(ErrorMessages.UnableToLoad));
   }, []);
 
   const handleChangeFilter = (filter: string) => setSelectedFilter(filter);
