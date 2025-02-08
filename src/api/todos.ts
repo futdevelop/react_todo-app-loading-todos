@@ -11,5 +11,4 @@ export const addTodo = (data: Partial<Todo>) => {
   return client.post<Todo>(`/todos?userId=${USER_ID}`, data);
 };
 
-
 // Add more methods here

@@ -67,6 +67,11 @@ body {
   overflow: hidden;
 }
 
+.visually-hidden {
+  display: none;
+}
+
+
 @import './todoapp';
 @import './todo';
 @import './filter';

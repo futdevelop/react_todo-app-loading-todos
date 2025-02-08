@@ -16,7 +16,7 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
           className="todo__status"
           checked={todo.completed}
         />
-        <span className="visually-hidden">Toggle todo status</span>
+        <span className="visually-hidden">Mark as completed</span>
       </label>
 
       <span data-cy="TodoTitle" className="todo__title">
